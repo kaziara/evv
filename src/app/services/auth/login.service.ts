@@ -34,7 +34,7 @@ export class LoginService {
 
   }
 
-  login(email: string, password: string): Observable<any> {
+  login(email: string, password: string) {
 
     let token;
     //console.log('login called');
@@ -44,9 +44,9 @@ export class LoginService {
       'password': password
     };
 
+
     let jwtHelper = new JwtHelperService();
     //console.log('**1**the token from userInfo is:' + this.userInfoService.getUserInfo());
-
 
     this.apiRequest.post('login', dataBody).subscribe(
       resp => {
@@ -55,6 +55,9 @@ export class LoginService {
           let jwt = resp.headers.get('Authorization');
           let objJWT = jwtHelper.decodeToken(jwt);
           let userId = objJWT.sub;
+
+         // console.log("objwt " + objJWT)
+         // console.log("userID" + userId)
           // console.log('the user id is ' + userId);
 
           //  console.log('the jwt is ' + jwt);
@@ -68,11 +71,13 @@ export class LoginService {
               'token': jwt,
             }
           };
+          //console.log("the login return " + JSON.stringify(this.loginInfoReturn))
 
           // store userId and jwt token in session storage to keep user logged in between page refreshes
-          this.userInfoService.storeUserInfo(JSON.stringify(this.loginInfoReturn.user.token));
+          this.userInfoService.storeUserInfo(JSON.stringify(this.loginInfoReturn.user));
 
         } else {
+          //console.log("first error")
           //Create a faliure object that we want to send back to login page
           this.loginInfoReturn = {
             'success': false,
@@ -83,6 +88,7 @@ export class LoginService {
         this.loginDataSubject.next(this.loginInfoReturn);
       },
       err => {
+        //console.log("secoknd error")
         this.loginInfoReturn = {
           'success': false,
           'landingPage': '/login'
@@ -90,8 +96,8 @@ export class LoginService {
       });
 
     //this.getUserInfos();
-
-    console.log(this.loginInfoReturn)
+    // console.log("the return" + this.loginDataSubject)
+    //console.log(this.loginInfoReturn)
     return this.loginDataSubject;
   }
 
@@ -134,28 +140,30 @@ export class LoginService {
   logout() {
     //console.log('logout called');
     this.userInfoService.removeUserInfo();
-    this.router.navigate(['/login']);
+    this.router.navigate(['/login']).then();
   }
 
-  async getUserInfos() {
-    console.log('get infos called');
-
-    await this.apiRequest.get('currentUser').then(resp => {
-      console.log(resp);
+   getUserInfos() {
+   // console.log('get infos called');
+    let ret;
+    return this.apiRequest.get('currentUser').subscribe(resp => {
+      return resp
       if (resp) {
+
         this.loginInfoReturn = {
           'success': true,
           'landingPage': this.landingPage,
           'user': {
-            username: resp.lastName,
+            username: "resp",
 
           }
         };
 
       }
-      console.log(this.loginInfoReturn)
+      // console.log(this.loginInfoReturn)
       this.loginDataSubject.next(this.loginInfoReturn);
     });
-    return this.loginInfoReturn.user.username;
+    return ret;
+    // return this.loginInfoReturn.user.username;
   }
 }

@@ -14,9 +14,9 @@
 
       <li class="nav-item" ngbDropdown placement="bottom-right">
         <a class="nav-link" role="button" ngbDropdownToggle>
-          <div class="media align-items-center">
+          <div *ngIf="userData" class="media align-items-center">
 
-            {{userName}}
+            {{ userData.lastName }}
           </div>
         </a>
         <div class="dropdown-menu-arrow dropdown-menu-right" ngbDropdownMenu>
@@ -60,7 +60,7 @@
         <li *ngFor="let menuItem of menuItems" class="{{menuItem.class}} nav-item">
           <a routerLinkActive="active" [routerLink]="[menuItem.path]" class="nav-link">
             <img class="mr-1" [src]="menuItem.icon">
-            {{menuItem.title}}
+            {{ menuItem.title }}
           </a>
         </li>
       </ul>

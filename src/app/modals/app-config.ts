@@ -13,8 +13,10 @@ export class AppConfig {
 
     this.baseUrl = "http://localhost:9595/kjj"
 
-    this.baseAuthApiPath = 'http://localhost:8087/users/';
-    this.baseAccountTransationPath = 'http://localhost:8088/accounts/';
+    this.baseAuthApiPath = 'https://expencia.fr/users/';
+    this.baseAccountTransationPath = 'https://expencia.fr/accounts/';
+    //this.baseAuthApiPath = 'http://localhost:8087/users/';
+    //this.baseAccountTransationPath = 'http://localhost:8088/accounts/';
 
   }
 

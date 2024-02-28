@@ -86,15 +86,17 @@
             </div>
           </form>
 
-          <div>{{loginForm.valid}}</div>
+          <div >You can use theses credentials to log in</div>
+          <div class="text-danger">Email :<p>joe.dupont@gmail.com</p> </div>
+          <div class="text-danger">Password :<p>TestApp++</p> </div>
         </div>
       </div>
       <div class="row mt-3">
         <div class="col-6">
-          <a href="javascript:void(0)" class="text-light"><small>Forgot password?</small></a>
+          <a  class="text-light"><small>Forgot password?</small></a>
         </div>
         <div class="col-6 text-right">
-          <a (click)="createAccount()" href="javascript:void(0)" class="text-light"><small>Create new
+          <a (click)="createAccount()"  class="text-light"><small>Create new
             account</small></a>
         </div>
       </div>

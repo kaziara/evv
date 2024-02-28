@@ -38,7 +38,7 @@ export class DashboardService {
   }
 
   getDashboardInfos(): Observable<any> {
-    console.log("get info called")
+ //   console.log("get info called")
     return this.http.get(this.appConfig.baseAccountTransationPath + 'getAccount', {headers: this.headers}).pipe(shareReplay(1));
   }
 

@@ -16,6 +16,7 @@ import {FormValidators} from "../../../validators/form-validators";
 export class LoginComponent implements OnInit, OnDestroy {
   loginForm: FormGroup;
   errorMsg: string;
+  a;
 
 
   constructor(private fb: FormBuilder,
@@ -37,6 +38,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy() {
+    //this.a.unsubscribe()
   }
 
 
@@ -45,31 +47,33 @@ export class LoginComponent implements OnInit, OnDestroy {
   }*/
 
   loginUser() {
-    this.route.navigate(['/dashboard']);
+    //this.route.navigate(['/dashboard']).then(r => true);
 
-   /* console.log(this.loginForm.value)
 
-    console.log(this.errorMsg)
-
-    this.loginService.login(this.loginForm.controls['email'].value,
+     this.loginService.login(this.loginForm.controls['email'].value,
       this.loginForm.controls['password'].value)
 
       .subscribe(resp => {
-          if (resp.user == undefined || resp.user.token == undefined) {
+         // console.log("the response " + resp)
+        //  console.log(resp)
+          if (resp == undefined) {
+            // console.log("we are in the error part")
             this.errorMsg = 'Username or password is incorrect';
             //console.log(this.errorMsg);
             return;
           }
+          this.route.navigate(['/dashboard']).then()
 
-          this.route.navigate(['/dashboard']);
+
         }
-      );
+      )
+    ;
 
-    console.log(this.errorMsg)*/
+
   }
 
   createAccount() {
-    this.route.navigate(['/register']);
+    this.route.navigate(['/register']).then(r => this.loginForm);
   }
 
 

@@ -21,6 +21,7 @@ import {DashboardService} from './services/dashboard/dashboard.service';
 import {TransactionsService} from './services/account/transactions.service';
 import {BrowserModule} from "@angular/platform-browser";
 import {PagesModule} from "./components/pages/pages.module";
+import {LocationStrategy, PathLocationStrategy} from "@angular/common";
 
 @NgModule({
   imports: [
@@ -41,6 +42,7 @@ import {PagesModule} from "./components/pages/pages.module";
     AuthLayoutComponent,
   ],
   providers: [
+    {provide: LocationStrategy, useClass: PathLocationStrategy},
     AppConfig,
     ApiRequestService,
     LoginService,

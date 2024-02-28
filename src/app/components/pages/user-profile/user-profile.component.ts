@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {FormBuilder, Validators} from "@angular/forms";
 import {UserService} from "../../../services/user/user.service";
 import * as _ from "lodash";
+import {AccountInfo} from "../../../modals/AccountInfo";
 
 @Component({
   selector: 'app-user-profile',
@@ -11,8 +12,9 @@ import * as _ from "lodash";
 export class UserProfileComponent implements OnInit {
 
   userInfoForm;
-  formData;
+  formData: AccountInfo;
   name;
+
 
   constructor(
     private fb: FormBuilder,
@@ -21,15 +23,12 @@ export class UserProfileComponent implements OnInit {
 
   async ngOnInit() {
 
-    console.log("1" + this.userInfoForm)
-
     await this.getuserInfos()
-    await this.initializeForm();
-    console.log(this.userInfoForm.value)
+
+    this.initializeForm();
     this.populatate();
     this.userNameData();
 
-    console.log(this.userInfoForm.value)
 
 
     //console.log(this.formData)
@@ -59,8 +58,8 @@ export class UserProfileComponent implements OnInit {
 
   populatate() {
     let rawData = this.formData;
-
     if (rawData != null) {
+
       //rawData = _.omit(rawData, 'operationDate',);
       // console.log(rawData);
       // console.log(rawData);
@@ -69,12 +68,10 @@ export class UserProfileComponent implements OnInit {
       // console.log(a)
       this.userInfoForm.patchValue(
         _.omitBy(rawData, (v) => _.isUndefined(v) || _.isNull(v) || v === ''));
-      //console.log(this.userInfoForm.value)
     }
   }
 
   onUpdate() {
-    console.log(this.userInfoForm.value);
     this.userService.updateUserInfo(this.userInfoForm.value).subscribe()
 
   }

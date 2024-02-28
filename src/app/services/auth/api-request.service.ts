@@ -22,9 +22,8 @@ export class ApiRequestService {
 
   }
 
-  get(url: string, urlParams?: HttpParams): Promise<any> {
+  get(url: string, urlParams?: HttpParams) {
     let me = this;
-    console.log("*************************************the headers*****************" + JSON.stringify(this.headers))
 
 
     return this.http.get(this.appConfig.baseAuthApiPath + url, {headers: this.headers})
@@ -35,7 +34,7 @@ export class ApiRequestService {
           me.router.navigate(['/logout']);
         }
         return throwError(error || 'Server error');
-      })).toPromise();
+      }));
   }
 
   post(url: string, body: object): Observable<any> {

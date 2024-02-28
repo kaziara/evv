@@ -46,13 +46,10 @@ export class TransactionsService {
 
 
   getInitialTransactions(): Observable<any> {
-    console.log("get initial called")
     return this.http.get(this.appConfig.baseAccountTransationPath + 'getAllOperations', {headers: this.apiRequestService.getHeaders()}).pipe(shareReplay(1));
   }
 
   postTransaction(dataBody) {
-    console.log('post transaction called');
-    console.log(dataBody);
     return this.http.post(this.appConfig.baseAccountTransationPath + 'createOperation', dataBody, {headers: this.apiRequestService.getHeaders()});
   }
 

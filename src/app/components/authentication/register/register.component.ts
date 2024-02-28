@@ -24,7 +24,7 @@ export class RegisterComponent implements OnInit {
     this.registerForm = this.fb.group({
       firstName: ['', Validators.required],
       lastName: ['', Validators.required],
-      email: ['', [Validators.required,FormValidators.emailsLenghtAndFormat]],
+      email: ['', [Validators.required, FormValidators.emailsLenghtAndFormat]],
       password: ['', Validators.required],
     });
   }
@@ -37,7 +37,7 @@ export class RegisterComponent implements OnInit {
       this.registerForm.controls['password'].value
     ).subscribe(resp => {
       if (!resp.success) {
-        this.errorMsg = 'there is something wrong';
+        // this.errorMsg = 'there is something wrong';
         return;
       }
       this.route.navigate(['/dashboard']);

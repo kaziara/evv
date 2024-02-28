@@ -41,7 +41,7 @@
                           [value]=category.key>{{category.value}}</mat-option>
             </mat-select>
             <mat-error *ngIf="dialogForm.get('category')?.hasError('required')">
-              Description is required.
+              Category is required.
             </mat-error>
           </mat-form-field>
 
@@ -51,7 +51,7 @@
             <input class="example-right-align" type="number" formControlName="amount" matInput>
             <span matPrefix>€&nbsp;</span>
             <mat-error *ngIf="dialogForm.get('amount')?.hasError('required')">
-              Description is required.
+              Amount is required.
             </mat-error>
           </mat-form-field>
 

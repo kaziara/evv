@@ -10,13 +10,13 @@ export class FormValidators {
         var re = new RegExp('(https?://)?([\\da-z.-]+)\\.([a-z.]{2,6})[/\\w .-]*/?');
         if ((control.value != '') && (!re.test(control.value))) {
 
-            console.log(control.value);
+           // console.log(control.value);
             // invalid, return error object
-            console.log('Successful match');
+         //   console.log('Successful match');
             return {'onlineUrl': true};
         } else {
             // valid, return null
-            console.log('not successful match');
+         //   console.log('not successful match');
             return null;
         }
     }

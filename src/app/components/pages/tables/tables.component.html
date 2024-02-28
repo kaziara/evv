@@ -126,7 +126,7 @@
                 {{item.operationDate | date:'yy-M-d, h:mm'}}
               </td>
               <td>
-                  <span class="badge badge-dot mr-4">
+                  <span class=" badge-dot mr-4">
                     <i class="bg-warning"></i> {{item.paymentMode | lowerStr}}
                   </span>
               </td>
@@ -157,7 +157,7 @@
             </tbody>
           </table>
         </div>
-        <div class="card-footer py-4">
+        <div class="card-footer py-4 d-flex justify-content-center">
 
           <ngb-pagination *ngIf="this.transactions !== undefined"
                           [(page)]="pageNumber"

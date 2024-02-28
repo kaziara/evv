@@ -1,0 +1,28 @@
+
+// Core
+
+@import "custom/functions";
+@import "custom/variables";
+@import "custom/mixins";
+
+
+ @import "~bootstrap/scss/bootstrap";
+@import "~bootstrap/scss/root";
+
+@import "~bootstrap/scss/grid";
+@import "~bootstrap/scss/tables";
+@import "~bootstrap/scss/card";
+
+@import "~bootstrap/scss/pagination";
+// Argon utilities and components
+
+@import "custom/reboot";
+@import "custom/utilities";
+@import "custom/components";
+
+// Vendor (Plugins)
+
+//@import "custom/vendors";
+
+// Angular Differences
+@import "angular-differences/angular-differences"

@@ -2,9 +2,13 @@
   <div class="container-fluid">
     <!-- Brand -->
     <div class="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block" routerLinkActive="active"
-    >{{getTitle()}}</div>
-    <!-- Form -->
+    >{{ getTitle() }}
 
+    </div>
+    <!-- Form -->
+  <!--  <button (click)="testApi()" mat-raised-button color="warn">
+      test
+    </button>-->
     <!-- User -->
     <ul class="navbar-nav align-items-center d-none d-md-flex">
       <li class="nav-item" ngbDropdown placement="bottom-right">
@@ -12,7 +16,8 @@
           <div class="media align-items-center">
 
             <div class="media-body ml-2 d-none d-lg-block">
-              <span class="mb-0 text-sm  font-weight-bold">{{userName}}</span>
+                            <span *ngIf="userData"
+                                  class="mb-0 text-sm  font-weight-bold">{{ userData.lastName }}</span>
             </div>
           </div>
         </a>

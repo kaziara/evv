@@ -18,8 +18,8 @@ export class AuthenticationGuard implements CanActivate, CanActivateChild {
 
   canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot) {
 
-    if (this.userInfoService.isLoggedIn()) {
-      this.route.navigate(["/login"])
+    if (!this.userInfoService.isLoggedIn()) {
+      this.route.navigate(["/login"]).then()
       return false;
     }
     return true;

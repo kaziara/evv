@@ -55,7 +55,6 @@ export class TablesComponent implements OnInit, AfterContentInit {
   }
 
   getTransac() {
-    console.log(this.transactions === undefined);
   }
 
   onCreate() {
@@ -84,7 +83,6 @@ export class TablesComponent implements OnInit, AfterContentInit {
         this.getInitialTransactions();
         this.getInfos();
 
-        console.log('deleted');
 
       });
 

@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {Router} from '@angular/router';
 import {LoginService} from "../../../services/auth/login.service";
+import {AccountInfo} from "../../../modals/AccountInfo";
+import {UserService} from "../../../services/user/user.service";
 
 declare interface RouteInfo {
   path: string;
@@ -25,17 +27,26 @@ export class SidebarComponent implements OnInit {
   public menuItems: any[];
   public isCollapsed = true;
   public userName;
+  userData: AccountInfo;
 
   constructor(private router: Router,
-              private loginService: LoginService) {
+              private loginService: LoginService,
+              private userService: UserService) {
   }
 
   async ngOnInit() {
-    this.userName = await this.loginService.getUserInfos();
+     await this.getuserInfos();
+
 
     this.menuItems = ROUTES.filter(menuItem => menuItem);
     this.router.events.subscribe((event) => {
       this.isCollapsed = true;
     });
+  }
+
+  async getuserInfos() {
+    await this.userService.getUserInfo().then(data => {
+      this.userData = data;
+    })
   }
 }
